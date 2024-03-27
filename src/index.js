@@ -1,5 +1,5 @@
 import Handlebars from "handlebars";
-import mediumZoom from "medium-zoom";
+// import mediumZoom from "medium-zoom";
 import "whatwg-fetch";
 
 import * as helpers from "./shared/helpers";
@@ -42,14 +42,14 @@ function loadDataAndRender(
         startBeforeGlobal = data.nextBefore;
         console.log(startBeforeGlobal);
       }
-      if (G_CONFIG.zoom) {
-        document.querySelectorAll("[data-zoomable]").forEach((element) => {
-          if (element.getAttribute("data-zoomed") !== "true") {
-            mediumZoom(element);
-            element.setAttribute("data-zoomed", "true");
-          }
-        });
-      }
+      // if (G_CONFIG.zoom) {
+      //   document.querySelectorAll("[data-zoomable]").forEach((element) => {
+      //     if (element.getAttribute("data-zoomed") !== "true") {
+      //       mediumZoom(element);
+      //       element.setAttribute("data-zoomed", "true");
+      //     }
+      //   });
+      // }
     })
     .catch((error) => {
       console.log(error);
@@ -106,14 +106,14 @@ function loadMore(apiEndpoint, refContainer) {
           console.log(startBeforeGlobal);
         }
       });
-      if (G_CONFIG.zoom && mediumZoom) {
-        document.querySelectorAll("[data-zoomable]").forEach((element) => {
-          if (element.getAttribute("data-zoomed") !== "true") {
-            mediumZoom(element);
-            element.setAttribute("data-zoomed", "true");
-          }
-        });
-      }
+      // if (G_CONFIG.zoom && mediumZoom) {
+      //   document.querySelectorAll("[data-zoomable]").forEach((element) => {
+      //     if (element.getAttribute("data-zoomed") !== "true") {
+      //       mediumZoom(element);
+      //       element.setAttribute("data-zoomed", "true");
+      //     }
+      //   });
+      // }
       loadMoreButton.disabled = false;
     })
     .catch((error) => {
@@ -158,7 +158,7 @@ function getDefaultTemplate() {
           src="{{ replaceImage this}}"
           loading="lazy"
           alt="这是一张图片"
-          data-zoomable
+          data-fancybox="gallery"
         />
         {{/unless}} {{/each}}
       </div>

@@ -84,9 +84,8 @@ const renderer = new marked.Renderer();
 
 renderer.image = function (href, title, text) {
   const imageClass = "image";
-  return `<img src="${href}" alt="${text}" class="${imageClass}"${
-    title ? ` title="${title}"` : ""
-  }>`;
+  return `<img src="${href}" alt="${text}" class="${imageClass}"${title ? ` title="${title}"` : ""
+    }>`;
 };
 
 export function mkRender(text) {
@@ -107,7 +106,7 @@ export function compoundRender(text) {
   var target = mkRender(result);
   target = target.replace(
     /<img src="!\[\]\((.*?)\)" alt="(.*?)" class="image">/g,
-    '<div class="image"><img src="$1" alt="$2" data-zoomable></div>'
+    '<div class="image"><img src="$1" alt="$2" data-fancybox="gallery"></div>'
   );
   return target;
 }
